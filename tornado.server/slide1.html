@@ -1,0 +1,24 @@
+<html>
+	<body>
+		hello world 2
+		<button onClick="nextSlide()"> next </button>
+	</body>
+	<head>
+		<script type="text/javascript" src="{{static_url('./lurlquery.js')}}"></script>
+
+		<script type="text/javascript">
+			g_slide = 2;
+			console.log('hello world ', g_slide);
+			function nextSlide(){
+
+				g_slide += 1
+				var formData = new FormData()
+				formData.append('slideIndex', g_slide)
+				lSendUrl('POST', 'http://localhost:22030/slide', formData, getSlide)
+			}
+			function getSlide(){
+				console.log('success get slide');
+			}
+		</script>
+	</head>
+</html>

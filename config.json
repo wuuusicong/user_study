@@ -1,0 +1,205 @@
+{
+    "1" : {
+        "pagetype" : "userinfopage",
+        "divstyle" : "position:absolute;top:30%;left:10%",
+        "tablestyle" : {
+            "border" : "1",
+            "bordercolor" : "steerblue",
+            "cellpadding" : "10px",
+            "cellspacing" : "0"
+        },
+        "tablecaption" : "Info",
+        "trandtd" : [
+            {
+                "display" : "Age", 
+                "tdtype" : "text", 
+                "name" : "age", 
+                "type" : "text"
+            },
+            {
+                "display" : "gender", 
+                "tdtype" : "radio", 
+                "option" : [
+                    {
+                        "display" : "Female", 
+                        "type" : "radio", 
+                        "name" : "gender", 
+                        "value" : "F", 
+                        "checked" : "checked" 
+                    },
+                    {
+                        "display" : "male", 
+                        "type" : "radio", 
+                        "name" : "gender", 
+                        "value" : "M", 
+                        "checked" : "none"
+                    }
+                ]
+            },
+            {
+                "display" : "Academic studies", 
+                "tdtype" : "radio", 
+                "option" : [
+                    {
+                        "display" : "Science/Engineering", 
+                        "type" : "radio", 
+                        "name" : "studyinterest", 
+                        "value" : "Science Engineering", 
+                        "checked" : "checked"
+                    },
+                    {
+                        "display" : "Humanities and Social sciences", 
+                        "type" : "radio", 
+                        "name" : "studyinterest", 
+                        "value" : "Humanities and Social sciences", 
+                        "checked" : "none"
+                    },
+                    {
+                        "display" : "Others", 
+                        "type" : "radio", 
+                        "name" : "studyinterest", 
+                        "value" : "Others", 
+                        "checked" : "none"
+                    }
+                ]
+            },
+            {
+                "display" : "Academic Level", 
+                "tdtype" : "radio", 
+                    "option" : [
+                        {
+                            "display" : "Undergraduate", 
+                            "type" : "radio", 
+                            "name" : "academiclevel", 
+                            "value" : "Undergraduate", 
+                            "checked" : "checked" 
+                        },
+                        {
+                            "display" : "Post graduate (MSc, PhD)", 
+                            "type" : "radio", 
+                            "name" : "academiclevel", 
+                            "value" : "Post graduate (MSc, PhD)", 
+                            "checked" : "none"
+                        },
+                        {
+                            "display" : "Other", 
+                            "type" : "radio", 
+                            "name" : "academiclevel", 
+                            "value" : "Other", 
+                            "checked" : "none"
+                        }
+                    ]
+            },
+            {
+                "display" : "Assess your experience in Data Visualization", 
+                "tdtype" : "radio", 
+                "option" : [
+                    {
+                        "display" : "None", 
+                        "type" : "radio", 
+                        "name" : "experience", 
+                        "value" : "None", 
+                        "checked" : "checked" 
+                    },
+                    {
+                        "display" : "Little", 
+                        "type" : "radio", 
+                        "name" : "experience", 
+                        "value" : "Little", 
+                        "checked" : "none"
+                    },
+                    {
+                        "display" : "Medium or pretty good", 
+                        "type" : "radio", 
+                        "name" : "experience", 
+                        "value" : "Medium or pretty good", 
+                        "checked" : "none"
+                    },
+                    {
+                        "display" : "Very good", 
+                        "type" : "radio", 
+                        "name" : "experience", 
+                        "value" : "Very good", 
+                        "checked" : "none"
+                    }
+                ]
+            }
+        ]
+    },
+    "2" : {
+        "pagetype" : "textpage",
+        "pagecontent" : "Scatterplot"
+    },
+    "3" : {
+        "pagetype" : "textpage",
+        "pagecontent" : "Exercise"
+    },
+    "4" : {
+        "pagetype" : "imgpage",
+        "imgsrc" : "rc1/scatterplot_intro.png"
+    },
+    "6" : {
+        "pagetype" : "questionoptionpage",
+        "imgsrc" : "rc1/07_2_1_o1_1.png",
+        "questionname": "How many clusters in the scatterplot?",
+        "optiontype" : "radiotext",
+        "optioncontent" : [2,3]
+    },
+    "8" : {
+        "pagetype" : "questionoptionpage",
+        "imgsrc" : "rc1/09_2_2_o1_1.png",
+        "questionname": "Which cluster has larger average certainty, cluster 1 or cluster 2?",
+        "optiontype" : "radiotext",
+        "optioncontent" : ["cluster1", "cluster2"]
+    },
+    "10" : {
+        "pagetype" : "questionoptionpage",
+        "imgsrc" : "rc1/11_3_1_o3_3.png",
+        "questionname": "How many clusters in the scatterplot?",
+        "optiontype" : "radiotext",
+        "optioncontent" : [3, 4, 6]
+    },
+    "12" : {
+        "pagetype" : "questionoptionpage",
+        "imgsrc" : "rc1/13_5_2_o1_4.png",
+        "questionname" : "Which cluster has larger average certainty, cluster 1 or cluster 2?",
+        "optiontype" : "radiotext",
+        "optioncontent" : ["cluster1", "cluster2"]
+    },
+    "14" : {
+        "pagetype" : "questionoptionpage",
+        "imgsrc" : "rc1/15_3_2_o2_2.png",
+        "questionname" : "Which cluster has larger average certainty, cluster 1 or cluster 2?",
+        "optiontype" : "radiotext",
+        "optioncontent" : ["cluster1", "cluster2"]
+    },
+    "16" : {
+        "pagetype" : "questionoptionpage",
+        "imgsrc" : "rc1/17_5_2_o2_4.png",
+        "questionname" : "Which cluster has larger average certainty, cluster 1 or cluster 2?",
+        "optiontype" : "radiotext",
+        "optioncontent" : ["cluster1", "cluster2"]
+    },
+    "18" : {
+        "pagetype" : "questionoptionpage",
+        "imgsrc" : "./rc2/19_5_2_o3_1.png",
+        "questionname" : "Which point has larger certainty, p1 or p2?",
+        "optiontype" : "radiotext",
+        "optioncontent" : ["p1", "p2"]
+    },
+    "20" : {
+        "pagetype" : "questionoptionpage",
+        "imgsrc" : "./rc2/21_8_2_o1_1.png",
+        "questionname" : "Which point has larger certainty, p1 or p2?",
+        "optiontype" : "radiotext",
+        "optioncontent" : ["p1", "p2"]
+    },
+    "22" : {
+        "pagetype" : "questionoptionpage",
+        "imgsrc" : "./rc2/23_3_1_o2_1.png",
+        "questionname" : "Which cluster the given point belongs to?",
+        "optiontype" : "radiocolor",
+        "colortype" : ["#2a79af","#fe7f01","#369f2f"],
+        "colorcontent" : ["blue","orange","green"]
+    }
+}

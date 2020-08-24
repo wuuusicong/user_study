@@ -1,0 +1,520 @@
+<html>
+    <script src = ></script>
+
+    <body>
+        <div id="content"></div>
+        <div id="nextbutton">
+            <button id="buttontonext" onClick="nextSlide()"> next page </button>
+        </div>
+        <div id="pagenodiv"><h3 id="pageno">1</h3></div>
+    </body>
+    <head>  
+        <style type="text/css">
+            #pagenodiv{
+                position: absolute;
+                top: 10%;
+                right: 5%;
+            }
+            .centerlinediv{
+                top: 45%;
+                position: absolute;
+                width: 100%;
+            }
+            #content{
+                text-align: center;
+                background: #c7e9c0;
+                height: 100%;
+                /*padding: 30px;*/
+            }
+            #nextbutton{
+                position: absolute;
+                right: 5%;
+                bottom: 10%;
+            }
+            #nextbutton button{
+                font-size: 30;
+                padding: 0 20;
+            }
+            input {
+                margin: 0 20;
+            }
+            input[type=checkbox]{
+                width: 30px;
+                height: 30px;
+            }
+            .mainimg{
+                /*height: 80%;*/
+                height: 400px;
+                margin-bottom: 30px;
+                background: white;
+            }
+            #mainimgdiv{
+                position: absolute;
+                top: 10%;
+                height: 80%;
+                width: 100%;
+            }
+        </style>
+
+        <script type="text/javascript" src="./lib/jquery.js"></script>
+        <script src = "./js/lfunctionhub.js"></script>
+        <!-- <script type="text/javascript" src="./lib/lurlquery.js"></script> -->
+        <script type="text/javascript" src = "./js/functionhub.js"></script>
+        <!-- <script src  = "./config.json"></script> -->
+        <script src = "./config.js"></script>
+
+        <script type="text/javascript">
+            var config1 = new ConfigProcess('./config2.json')
+            var totalconfig = []
+            var configKeyList = []
+            var totalpage = 0
+            g_slide = 0;
+            $('#content')[0].innerHTML = getPageContent(g_slide)//'hello page#' + g_slide
+
+            function nextSlide(){
+
+                var g_option =  document.getElementById("optionContent")
+                var questionintro = document.getElementById("questionintro")
+
+
+                if(g_slide == 0){
+                    totalconfig = config1.getTotalConfig()
+                    configKeyList = Object.keys(totalconfig)
+                    totalpage = configKeyList[configKeyList.length-1]
+                    console.log("totalconfig", totalconfig)
+                    console.log("totalpage", totalpage)
+                }
+                else{
+                    if (g_slide >= totalpage){
+                        $('#pageno')[0].innerHTML = '' + totalpage + '/' + totalpage;
+                    }
+                    else{
+                        $('#pageno')[0].innerHTML = '' + (g_slide + 1) + '/' + totalpage;
+                    }
+                    
+                    var configSlideIndex = totalconfig[g_slide]
+                    if(configSlideIndex != undefined){
+                        if(configSlideIndex["pagetype"] == "userinfopage"){
+                            g_functionhub.submit()
+                        }
+                        else if(configSlideIndex["pagetype"] == "questionoptionpage"){
+                            answerSubmit(g_slide)
+                            $('#buttontonext')[0].innerHTML = "next"
+                        }
+                    }
+                    else{
+                        if(g_slide > totalpage){
+                            return 0
+                        } 
+                        else if(totalconfig[g_slide+1]["pagetype"] == "questionoptionpage"){
+                            loadImgTime()
+                            $('#buttontonext')[0].innerHTML = "confirm & next"
+                        }
+                    }
+                    
+                }
+                
+                
+                g_slide += 1
+
+                $('#content')[0].innerHTML = getPageContent(g_slide);
+                console.log("pagenumber", g_slide)
+                
+            }
+
+            function getConfigContent(slideIndex){
+
+            }
+
+            function getPageContent(slideIndex){
+                var configIndex = totalconfig[slideIndex]
+
+                console.log("configindex", configIndex)
+
+                // var pagesContent = {
+                //     0:getWelorFinPage('welcome :)'),
+                //     "userinfopage":getUserInfoForm(slideIndex),
+                //     ""
+                // }
+
+
+
+                if(slideIndex == 0){
+                    return getWelorFinPage('welcome :)')
+                }
+                else if(configIndex != undefined){
+
+                    if(configIndex["pagetype"] == "userinfopage"){
+                        return getUserInfoForm(slideIndex);
+                    }
+
+                    else if(configIndex["pagetype"] == "imgpage"){
+                        return '<div id="mainimgdiv">' + 
+                           '<img class="mainimg" src="' + configIndex["imgsrc"] +'"/>' +
+                                `<div>${configIndex["pagecontent"]}</div>`
+                           '</div>'
+                    }
+                    else if(configIndex["pagetype"] == "questionoptionpage"){
+                        var questionContent = getQuestionContent(configIndex)
+                        console.log("questionContent",questionContent)
+                        var imgContent = getImgContent(configIndex["imgsrc"])
+                        // var optionContent = getOptionContent(configIndex)
+                        // return imgContent + questionContent + optionContent
+                        return imgContent + questionContent
+                    }
+                }
+                else{
+                    if(slideIndex > totalpage){
+                        return getWelorFinPage('Finish! Thank you : )')
+                    } 
+                    else if(totalconfig[slideIndex+1]["pagetype"] == "questionoptionpage"){
+                        return getTextPage(slideIndex+1,true)
+                    }
+                }
+                // else if(slideIndex >= 6 && slideIndex <= 80 && slideIndex%2 == 0){
+                //     // var questionContent = questionMap[slideIndex+1]["question"]
+                //     var questionContent = questionMap[slideIndex+1]
+                //     return getTextPage(questionContent, true)
+                // }
+                // //testing
+                // else if(slideIndex >= 7 && slideIndex <= 81 && slideIndex%2 == 1 ){
+                //     console.log("quesitonmap", questionMap)
+                //     var imgContent = getImgContent(slideIndex);
+                //     // var questionContent = getQuestionContent(questionMap[slideIndex]["question"]);
+                //     var questionContent = getQuestionContent(questionMap[slideIndex]);
+                //     var optionContent = getOptionContent(slideIndex)
+
+                //     return imgContent + questionContent + optionContent;
+                // }
+                // else if(slideIndex >= 82){
+                //     return getTextPage('Finish! Thank you : )', false)
+                // }
+                
+            }
+
+            function getUserInfoForm(slideIndex){
+                return config1.getUserContent(slideIndex)
+                // return '<div style="position:absolute;top:30%;left:10%"><form method="post" action="">' 
+                //             '<table border="1" bordercolor= "steerblue" cellpadding="10px" cellspacing="0">'+
+                //                 '<caption>Info</caption> '+
+                //                 '<tbody>'+
+                //                     config1.getUserContent(slideIndex)+
+                //                 '</tbody>'+
+                //             '</table>'+
+                //             // '<input id = "submitbutton" type = "submit" name = "submit" value="submit" onclick >'+
+                //         '</form></div>'
+            }
+
+            function getWelorFinPage(text){
+                
+                return '<div class="centerlinediv"><h1>' + text + '</h1></div>'
+            }
+
+            function getTextPage(slideIndex, isQuestion){
+                if (isQuestion){
+                    return '<div class="centerlinediv"><h1>' + totalconfig[slideIndex]['questionname'] + '</h1></div>'
+                }
+                else{
+                    return '<div class="centerlinediv"><h1>' + totalconfig[slideIndex]['pagecontent'] + '</h1></div>'
+                }
+                
+            }
+            
+            function getImgContent(imgsrc){
+                return '<div id="mainimgdiv">' + 
+                       '<img class="mainimg" src="' +imgsrc + '" />'
+                       '</div>'
+            }
+
+            // function getImgContent(imgIndex){
+            //     var g_liImg = Object.keys(imgListDict)
+            //     for(var i = 0; i < g_liImg.length; ++i){
+            //         if(imgIndex == g_liImg[i].substring(0,2))
+            //         {
+            //             return '<div id="mainimgdiv">' + 
+            //            '<img class="mainimg" src="' +imgListDict[g_liImg[i]] + '" />'
+            //            '</div>'
+            //         }
+            //     }
+
+            //     console.log('<img class="mainimg" src=' + imgListDict[g_liImg[i]] + '/>');
+            // }
+
+            function getQuestionContent(config){
+                let questionText = config["questionname"]
+                let option = ''
+                let allDiv = '<div>'
+                for (let i in questionText){
+                    allDiv = allDiv +'<div '+'id = "'+"question"+i+'">'    + questionText[i] + '</div>'
+                            +getOptionContent(config["optiontype"][i],config["optioncontent"][i],i)
+
+                }
+                allDiv += '</div>'
+               return allDiv
+            }
+
+            function getOptionContent2(){
+
+            }
+
+            function addOptionContent(clusternumber, liColor, liColorname, isQuestion1){
+                var optionText;
+                var optionContent = ""
+                for (var j = 0 ; j < clusternumber; j++){
+                    console.log("j", j)
+                    if(isQuestion1){
+                        optionText = j+2
+
+                        if(clusternumber <= 3){
+                            if(j == 0){
+                            var input = '<input type = "radio" name = "answer" ' + 
+                            ' value = " ' + optionText + ' " ' +
+                            ' checked = "checked">'
+                            }
+                            else{
+                                var input = '<input type = "radio" name = "answer" ' + 
+                                ' value = " ' + optionText + ' " >'
+                            }
+                        }
+                        else if(clusternumber == 5){
+                            // if(clusternumber >= 2){
+                            var input = '<input type = "radio" name = "answer" ' + 
+                            ' value = " ' + 3 + ' " ' + 
+                            ' checked = "checked">' + 3+
+                            '<input type = "radio" name = "answer" ' + 
+                            ' value = " ' + 5 + ' " >' + 5+ 
+                            '<input type = "radio" name = "answer" ' + 
+                            ' value = " ' + 6 + ' " >' + 6 
+                            optionContent = input
+                            break;
+                        }
+                        else if(clusternumber == 8){
+                            var input = '<input type = "radio" name = "answer" ' + 
+                            ' value = " ' + 6 + ' " ' +
+                            ' checked = "checked">'+ 6 + 
+                            '<input type = "radio" name = "answer" ' + 
+                            ' value = " ' + 8 + ' " >'+ 8 +
+                            '<input type = "radio" name = "answer" ' + 
+                            ' value = " ' + 9 + ' " >'+ 9 +
+                            '<input type = "radio" name = "answer" ' + 
+                            ' value = " ' + 10 + ' " >'+ 10 
+                            optionContent = input
+                            break; 
+                        }
+
+                        
+                        
+                        
+                        optionContent = optionContent.concat(input + optionText);
+
+                    }else{
+                        var cluster1 = "cluster1"
+                        var cluster2 = "cluster2"
+                        var input = '<input type = "radio" name = "answer" ' + 
+                            ' value = "cluster1" checked = "checked">'+ cluster1+
+                         '<input type = "radio" name =  "answer" ' +
+                            ' value = "cluster2">'+cluster2
+
+                        optionContent = input
+                        break
+                    }
+
+                    
+                }
+                return optionContent;
+            }
+
+            function getOptionContent(optiontype,optioncontent,i){
+                // var optiontype = config["optiontype"]
+                var answerName = "answer"+i
+                var allOptioncontent = ""
+                if(optiontype == "radiotext"){
+                    // var optioncontent = config["optioncontent"]
+                    for(var l = 0; l < optioncontent.length; l++){
+                            var optionText = optioncontent[l]["name"]
+                            console.log("optiontext",optionText)
+                            if (l == 0){
+                                var input = '<input type = "radio" ' +  'name = "' +answerName+'"'+
+                                ' value = " ' + optionText + ' " ' +
+                                ' checked = "checked">'+optionText
+                            }
+                            else{
+                                    var input = '<input type = "radio" ' +  'name = "' +answerName+'"'+
+                                    ' value = " ' + optionText + ' " >'+optionText
+                            }        
+                            allOptioncontent = allOptioncontent.concat(input)
+                        }
+                }
+                else if(optiontype == "radiocolor"){
+
+                    for(var l = 0; l < optioncontent.length; ++l){
+                        var colorcode = optioncontent[l]["code"]
+                        var colorname = optioncontent[l]["name"]
+                        if (l == 0){
+                            var input = '<input type = "radio"' +  'name = "' +answerName+'"'+
+                            ' value = " ' + colorname + ' " ' +
+                            ' checked = "checked">'
+                        }
+                        else{
+                            var input = '<input type = "radio" ' +  'name = "' +answerName+'"'+
+                            ' value = " ' + colorname + ' ">'
+                        }
+                        var optionText = '<svg width="30" height="15"> <rect style = "fill: ' + colorcode + ';" width="35" height="15" ></rect> </svg> '+ colorname
+                        // input = input + optionText
+                        allOptioncontent = allOptioncontent.concat(input + optionText)
+                    }
+                }
+                
+                return allOptioncontent;
+            }
+
+            function getOptionContent3(imgIndex){
+                var isQuestion1;
+                var g_liImg = Object.keys(imgListDict)
+                for(var i = 0; i < g_liImg.length; ++i){
+                    if(imgIndex == g_liImg[i].substring(0,2)){
+                        var clusternumber = g_liImg[i].charAt(3)
+                        var questionnumber = g_liImg[i].charAt(5)
+                        if(questionnumber == 1){
+                            isQuestion1 = true;
+                        }
+                        else if(questionnumber == 2){
+                            isQuestion1 = false;
+                        }
+                        break;
+                    }   
+                }
+                var liColor = ["#2a79af","#fe7f01","#369f2f","#e31a1c","#fb9a99","#6c4199","#ab5e33","#c8b0d4"]
+                var liColorname = ["blue","orange","green","red","pink","purple","brown","lavender"]
+                var l_optionContent = ""
+
+                l_optionContent = addOptionContent(clusternumber, liColor, liColorname, isQuestion1)
+
+
+                console.log("optionContent", l_optionContent)
+                return '<div id = "optionContent">' + l_optionContent + '</div>'
+            }
+        </script>
+
+        <script>
+
+            getImgList = function(){
+                var formData = new FormData()
+                var url = "http://localhost:22030/getImgList"
+                lSendUrl('POST',url, formData, successGetImgList)
+            }
+
+            successGetImgList = function(response, self){
+                console.log("response", response)
+                imgListDict = response['img']
+                // questionMapFunc();
+                console.log("imgListDictresponse", imgListDict)
+                
+            }
+
+            // questionMapFunc = function(){
+            //     var questionarray = []
+            //     questionarray = config1.getQuestionContent()
+            //     console.log("qwe", questionarray)
+
+
+            //     var imgList = Object.keys(imgListDict)
+            //     // console.log("imglist",imgList)
+            //     for(var i = 0; i < imgList.length; ++i){
+            //         var questionPageNumber = parseInt(imgList[i].substring(0,2))
+            //         var imgQuestionNumber = imgList[i].charAt(5)
+            //         for(var j = 0; j < questionarray.length; j ++){
+            //             if(imgQuestionNumber == questionarray[j]["questionnumber"]){
+
+            //                 questionMap[questionPageNumber] = questionarray[j]["questionname"]
+            //                 break;
+            //             }
+            //         }
+            //     }
+
+            // }
+
+            loadImgTime = function(){
+                timestart = new Date()
+                console.log(' time start ', timestart)
+            }
+
+            nextButtonTime = function(){
+                console.log("timestart", timestart)
+
+                timeend = new Date();
+
+                // interval_new = (timeend - timestart)/1000
+
+                var intervalms = (timeend - timestart);
+                var days = Math.floor(intervalms/(24*3600*1000))
+                
+                var level1 = intervalms%(24*3600*1000)
+                var hours = Math.floor(level1/(3600*1000))
+
+                var level2 = intervalms%(3600*1000)
+                var minutes = Math.floor(level2/(60*1000))
+
+                var level3 = intervalms%(60*1000)
+                var seconds = Math.round(level3/1000)
+
+                var level4 = intervalms%1000
+                var seconds2 = Math.round(level4/10) / 100
+
+                interval = hours * 3600 + minutes*60 + seconds + seconds2
+                console.log("timeend", timeend)
+                console.log("interval",interval)
+
+                // timestart = timeend
+            }
+
+            answerSubmit = function(imgIndex){
+                nextButtonTime();
+                var self = this;
+                this._answer = []
+                this._answer[0] = $('input:radio[name="answer0"]:checked').val();
+                this._answer[1] = $('input:radio[name="answer1"]:checked').val();
+                this._answer[2] = $('input:radio[name="answer2"]:checked').val();
+
+                // this._answer = $('input:radio[name="answer"]:checked').val();
+                // this._question = $('#question').text()
+                this._question = []
+                this._question[0] = $('#question0').text()
+                this._question[1] = $('#question1').text()
+                this._question[2] = $('#question2').text()
+
+                this._imgname2 = imgIndex.toString().concat(".png")
+                this._imgsrc = totalconfig[imgIndex]["imgsrc"].toString()
+                console.log("src", this._imgsrc)
+                var formData = new FormData()
+                formData.append('question',this._question)
+                // formData.append('question[]',this._question[0])
+                // formData.append('question[]',this._question[1])
+                // formData.append('question[]',this._question[2])
+                formData.append('answer',this._answer)
+                formData.append('answerinterval',interval)
+                formData.append('imgsrc', this._imgsrc)
+                var url = "http://localhost:22030/saveanswerinfo"
+                lSendUrl("POST", url, formData, self.successSaveAnswer)
+
+            }
+
+            successSaveAnswer = function(response, self){
+                console.log("save answer ok")
+            }
+
+        </script>
+
+
+        <script>
+            var timestart,timeend,interval
+            var g_functionhub = new FunctionHub()
+            var imgListDict;
+            var questionMap = {}
+            getImgList()
+            
+
+        </script>
+        
+    </head>
+</html>

@@ -1,0 +1,839 @@
+{
+  "1": {
+    "pagetype": "userinfopage",
+    "divstyle": "position:absolute;top:30%;left:10%",
+    "tablestyle": {
+      "border": "1",
+      "bordercolor": "steerblue",
+      "cellpadding": "10px",
+      "cellspacing": "0"
+    },
+    "tablecaption": "Info",
+    "trandtd": [
+      {
+        "display": "Age",
+        "tdtype": "text",
+        "name": "age",
+        "type": "text"
+      },
+      {
+        "display": "gender",
+        "tdtype": "radio",
+        "option": [
+          {
+            "display": "Female",
+            "type": "radio",
+            "name": "gender",
+            "value": "F",
+            "checked": "checked"
+          },
+          {
+            "display": "male",
+            "type": "radio",
+            "name": "gender",
+            "value": "M",
+            "checked": "none"
+          }
+        ]
+      },
+      {
+        "display": "Academic studies",
+        "tdtype": "radio",
+        "option": [
+          {
+            "display": "Science/Engineering",
+            "type": "radio",
+            "name": "studyinterest",
+            "value": "Science Engineering",
+            "checked": "checked"
+          },
+          {
+            "display": "Humanities and Social sciences",
+            "type": "radio",
+            "name": "studyinterest",
+            "value": "Humanities and Social sciences",
+            "checked": "none"
+          },
+          {
+            "display": "Others",
+            "type": "radio",
+            "name": "studyinterest",
+            "value": "Others",
+            "checked": "none"
+          }
+        ]
+      },
+      {
+        "display": "Academic Level",
+        "tdtype": "radio",
+        "option": [
+          {
+            "display": "Undergraduate",
+            "type": "radio",
+            "name": "academiclevel",
+            "value": "Undergraduate",
+            "checked": "checked"
+          },
+          {
+            "display": "Post graduate (MSc, PhD)",
+            "type": "radio",
+            "name": "academiclevel",
+            "value": "Post graduate (MSc, PhD)",
+            "checked": "none"
+          },
+          {
+            "display": "Other",
+            "type": "radio",
+            "name": "academiclevel",
+            "value": "Other",
+            "checked": "none"
+          }
+        ]
+      },
+      {
+        "display": "Assess your experience in Data Visualization",
+        "tdtype": "radio",
+        "option": [
+          {
+            "display": "None",
+            "type": "radio",
+            "name": "experience",
+            "value": "None",
+            "checked": "checked"
+          },
+          {
+            "display": "Little",
+            "type": "radio",
+            "name": "experience",
+            "value": "Little",
+            "checked": "none"
+          },
+          {
+            "display": "Medium or pretty good",
+            "type": "radio",
+            "name": "experience",
+            "value": "Medium or pretty good",
+            "checked": "none"
+          },
+          {
+            "display": "Very good",
+            "type": "radio",
+            "name": "experience",
+            "value": "Very good",
+            "checked": "none"
+          }
+        ]
+      }
+    ]
+  },
+  "2": {
+    "pagetype": "imgpage",
+    "imgsrc": "new/4.png",
+    "pagecontent": "4Clusters"
+  },
+  "3": {
+    "pagetype": "questionoptionpage",
+    "imgsrc": "new/4-1.jpg",
+    "questionname": [
+      "Does the Orange cluster overlap with the Blue one?",
+      "Which cluster has the largest portion overlapped by the Green cluster, Orange or Red?",
+      "Which cluster overlaps with the largest number of clusters?"
+    ],
+    "optiontype": [
+      "radiotext",
+      "radiotext",
+      "radiotext"
+    ],
+    "optioncontent": [
+      [
+        {
+          "name": "yes"
+        },
+        {
+          "name": "no"
+        }
+      ],
+      [
+        {
+          "name": "red",
+          "code": "#e41a1c"
+        },
+        {
+          "name": "blue",
+          "code": "#377eb8"
+        },
+        {
+          "name": "green",
+          "code": "#4daf4a"
+        },
+        {
+          "name": "orange",
+          "code": "#ff7f00"
+        }
+      ],
+       [
+        {
+          "name": "red",
+          "code": "#e41a1c"
+        },
+        {
+          "name": "blue",
+          "code": "#377eb8"
+        },
+        {
+          "name": "green",
+          "code": "#4daf4a"
+        },
+        {
+          "name": "orange",
+          "code": "#ff7f00"
+        }
+      ]
+    ]
+  },
+  "4": {
+    "pagetype": "questionoptionpage",
+    "imgsrc": "new/4-2.jpg",
+   "questionname": [
+      "Does the Orange cluster overlap with the Blue one?",
+      "Which cluster has the largest portion overlapped by the Green cluster, Orange or Red?",
+      "Which cluster overlaps with the largest number of clusters?"
+    ],
+   "optiontype": [
+      "radiotext",
+      "radiocolor",
+      "radiocolor"
+    ],
+      "optioncontent": [
+      [
+        {
+          "name": "yes"
+        },
+        {
+          "name": "no"
+        }
+      ],
+      [
+        {
+          "name": "red",
+          "code": "#e41a1c"
+        },
+        {
+          "name": "blue",
+          "code": "#377eb8"
+        },
+        {
+          "name": "green",
+          "code": "#4daf4a"
+        },
+        {
+          "name": "orange",
+          "code": "#ff7f00"
+        }
+      ],
+       [
+        {
+          "name": "red",
+          "code": "#e41a1c"
+        },
+        {
+          "name": "blue",
+          "code": "#377eb8"
+        },
+        {
+          "name": "green",
+          "code": "#4daf4a"
+        },
+        {
+          "name": "orange",
+          "code": "#ff7f00"
+        }
+      ]
+    ]
+  },
+  "5": {
+    "pagetype": "questionoptionpage",
+    "imgsrc": "new/4-3.jpg",
+    "questionname": [
+      "Does the Orange cluster overlap with the Blue one?",
+      "Which cluster has the largest portion overlapped by the Green cluster, Orange or Red?",
+      "Which cluster overlaps with the largest number of clusters?"
+    ],
+     "optiontype": [
+      "radiotext",
+      "radiocolor",
+      "radiocolor"
+    ],
+     "optioncontent": [
+      [
+        {
+          "name": "yes"
+        },
+        {
+          "name": "no"
+        }
+      ],
+      [
+        {
+          "name": "red",
+          "code": "#e41a1c"
+        },
+        {
+          "name": "blue",
+          "code": "#377eb8"
+        },
+        {
+          "name": "green",
+          "code": "#4daf4a"
+        },
+        {
+          "name": "orange",
+          "code": "#ff7f00"
+        }
+      ],
+       [
+        {
+          "name": "red",
+          "code": "#e41a1c"
+        },
+        {
+          "name": "blue",
+          "code": "#377eb8"
+        },
+        {
+          "name": "green",
+          "code": "#4daf4a"
+        },
+        {
+          "name": "orange",
+          "code": "#ff7f00"
+        }
+      ]
+    ]
+  },
+
+
+
+
+
+
+
+
+
+
+   "6": {
+    "pagetype": "imgpage",
+    "imgsrc": "new/6.png",
+    "pagecontent": "6Clusters"
+  },
+  "7": {
+    "pagetype": "questionoptionpage",
+    "imgsrc": "new/6-1.jpg",
+    "questionname": [
+      "Does the Orange cluster overlap with the Blue one?",
+      "Which cluster has the largest portion overlapped by the Green cluster, Orange or Red?",
+      "Which cluster overlaps with the largest number of clusters?"
+    ],
+    "optiontype": [
+      "radiotext",
+      "radiocolor",
+      "radiocolor"
+    ],
+      "optioncontent": [
+      [
+        {
+          "name": "yes"
+        },
+        {
+          "name": "no"
+        }
+      ],
+      [
+        {
+          "name": "red",
+          "code": "#e41a1c"
+        },
+        {
+          "name": "blue",
+          "code": "#377eb8"
+        },
+        {
+          "name": "green",
+          "code": "#4daf4a"
+        },
+        {
+          "name": "orange",
+          "code": "#ff7f00"
+        },
+         {
+          "name": "yellow",
+          "code": "#ffff33"
+        },
+         {
+          "name": "brown",
+          "code": "#a65628"
+        }
+      ],
+       [
+        {
+          "name": "red",
+          "code": "#e41a1c"
+        },
+        {
+          "name": "blue",
+          "code": "#377eb8"
+        },
+        {
+          "name": "green",
+          "code": "#4daf4a"
+        },
+        {
+          "name": "orange",
+          "code": "#ff7f00"
+        },
+         {
+          "name": "yellow",
+          "code": "#ffff33"
+        },
+         {
+          "name": "brown",
+          "code": "#a65628"
+        }
+      ]
+      ]
+  },
+  "8": {
+    "pagetype": "questionoptionpage",
+    "imgsrc": "new/6-2.jpg",
+    "questionname": [
+      "Does the Orange cluster overlap with the Blue one?",
+      "Which cluster has the largest portion overlapped by the Green cluster, Orange or Red?",
+      "Which cluster overlaps with the largest number of clusters?"
+    ],
+   "optiontype": [
+      "radiotext",
+      "radiocolor",
+      "radiocolor"
+    ],
+       "optioncontent": [
+      [
+        {
+          "name": "yes"
+        },
+        {
+          "name": "no"
+        }
+      ],
+      [
+        {
+          "name": "red",
+          "code": "#e41a1c"
+        },
+        {
+          "name": "blue",
+          "code": "#377eb8"
+        },
+        {
+          "name": "green",
+          "code": "#4daf4a"
+        },
+        {
+          "name": "orange",
+          "code": "#ff7f00"
+        },
+         {
+          "name": "yellow",
+          "code": "#ffff33"
+        },
+         {
+          "name": "brown",
+          "code": "#a65628"
+        }
+      ],
+       [
+        {
+          "name": "red",
+          "code": "#e41a1c"
+        },
+        {
+          "name": "blue",
+          "code": "#377eb8"
+        },
+        {
+          "name": "green",
+          "code": "#4daf4a"
+        },
+        {
+          "name": "orange",
+          "code": "#ff7f00"
+        },
+         {
+          "name": "yellow",
+          "code": "#ffff33"
+        },
+         {
+          "name": "brown",
+          "code": "#a65628"
+        }
+      ]
+      ]
+  },
+  "9": {
+    "pagetype": "questionoptionpage",
+    "imgsrc": "new/6-3.jpg",
+   "questionname": [
+      "Does the Orange cluster overlap with the Blue one?",
+      "Which cluster has the largest portion overlapped by the Green cluster, Orange or Red?",
+      "Which cluster overlaps with the largest number of clusters?"
+    ],
+   "optiontype": [
+      "radiotext",
+      "radiocolor",
+      "radiocolor"
+    ],
+      "optioncontent": [
+      [
+        {
+          "name": "yes"
+        },
+        {
+          "name": "no"
+        }
+      ],
+      [
+        {
+          "name": "red",
+          "code": "#e41a1c"
+        },
+        {
+          "name": "blue",
+          "code": "#377eb8"
+        },
+        {
+          "name": "green",
+          "code": "#4daf4a"
+        },
+        {
+          "name": "orange",
+          "code": "#ff7f00"
+        },
+         {
+          "name": "yellow",
+          "code": "#ffff33"
+        },
+         {
+          "name": "brown",
+          "code": "#a65628"
+        }
+      ],
+       [
+        {
+          "name": "red",
+          "code": "#e41a1c"
+        },
+        {
+          "name": "blue",
+          "code": "#377eb8"
+        },
+        {
+          "name": "green",
+          "code": "#4daf4a"
+        },
+        {
+          "name": "orange",
+          "code": "#ff7f00"
+        },
+         {
+          "name": "yellow",
+          "code": "#ffff33"
+        },
+         {
+          "name": "brown",
+          "code": "#a65628"
+        }
+      ]
+      ]
+  },
+
+  "10": {
+    "pagetype": "imgpage",
+    "imgsrc": "new/8.png",
+    "pagecontent": "8Clusters"
+  },
+  "11": {
+    "pagetype": "questionoptionpage",
+        "imgsrc": "new/8-1.jpg",
+    "questionname": [
+      "Does the Orange cluster overlap with the Blue one?",
+      "Which cluster has the largest portion overlapped by the Green cluster, Orange or Red?",
+      "Which cluster overlaps with the largest number of clusters?"
+    ],
+    "optiontype": [
+      "radiotext",
+      "radiocolor",
+      "radiocolor"
+    ],
+      "optioncontent": [
+      [
+        {
+          "name": "yes"
+        },
+        {
+          "name": "no"
+        }
+      ],
+      [
+        {
+          "name": "red",
+          "code": "#e41a1c"
+        },
+        {
+          "name": "blue",
+          "code": "#377eb8"
+        },
+        {
+          "name": "green",
+          "code": "#4daf4a"
+        },
+        {
+          "name": "orange",
+          "code": "#ff7f00"
+        },
+         {
+          "name": "yellow",
+          "code": "#ffff33"
+        },
+         {
+          "name": "brown",
+          "code": "#a65628"
+        },
+          {
+          "name": "purple",
+          "code": "#984ea3"
+        },
+          {
+          "name": "pink",
+          "code": "#f781bf"
+        }
+      ],
+       [
+        {
+          "name": "red",
+          "code": "#e41a1c"
+        },
+        {
+          "name": "blue",
+          "code": "#377eb8"
+        },
+        {
+          "name": "green",
+          "code": "#4daf4a"
+        },
+        {
+          "name": "orange",
+          "code": "#ff7f00"
+        },
+         {
+          "name": "yellow",
+          "code": "#ffff33"
+        },
+         {
+          "name": "brown",
+          "code": "#a65628"
+        },
+          {
+          "name": "purple",
+          "code": "#984ea3"
+        },
+          {
+          "name": "pink",
+          "code": "#f781bf"
+        }
+      ]
+      ]
+  },
+  "12": {
+    "pagetype": "questionoptionpage",
+        "imgsrc": "new/8-2.jpg",
+    "questionname": [
+      "Does the Orange cluster overlap with the Blue one?",
+      "Which cluster has the largest portion overlapped by the Yellow cluster, Blue or Brown?",
+      "Which cluster overlaps with the largest number of clusters?"
+    ],
+  "optiontype": [
+      "radiotext",
+      "radiocolor",
+      "radiocolor"
+    ],
+      "optioncontent": [
+      [
+        {
+          "name": "yes"
+        },
+        {
+          "name": "no"
+        }
+      ],
+      [
+        {
+          "name": "red",
+          "code": "#e41a1c"
+        },
+        {
+          "name": "blue",
+          "code": "#377eb8"
+        },
+        {
+          "name": "green",
+          "code": "#4daf4a"
+        },
+        {
+          "name": "orange",
+          "code": "#ff7f00"
+        },
+         {
+          "name": "yellow",
+          "code": "#ffff33"
+        },
+         {
+          "name": "brown",
+          "code": "#a65628"
+        },
+          {
+          "name": "purple",
+          "code": "#984ea3"
+        },
+          {
+          "name": "pink",
+          "code": "#f781bf"
+        }
+      ],
+       [
+        {
+          "name": "red",
+          "code": "#e41a1c"
+        },
+        {
+          "name": "blue",
+          "code": "#377eb8"
+        },
+        {
+          "name": "green",
+          "code": "#4daf4a"
+        },
+        {
+          "name": "orange",
+          "code": "#ff7f00"
+        },
+         {
+          "name": "yellow",
+          "code": "#ffff33"
+        },
+         {
+          "name": "brown",
+          "code": "#a65628"
+        },
+          {
+          "name": "purple",
+          "code": "#984ea3"
+        },
+          {
+          "name": "pink",
+          "code": "#f781bf"
+        }
+      ]
+      ]
+  },
+  "13": {
+    "pagetype": "questionoptionpage",
+       "imgsrc": "new/8-3.jpg",
+     "questionname": [
+      "Does the Orange cluster overlap with the Blue one?",
+      "Which cluster has the largest portion overlapped by the Blue cluster, Yellow or Purple?",
+      "Which cluster overlaps with the largest number of clusters?"
+    ],
+    "optiontype": [
+      "radiotext",
+      "radiocolor",
+      "radiocolor"
+    ],
+      "optioncontent": [
+      [
+        {
+          "name": "yes"
+        },
+        {
+          "name": "no"
+        }
+      ],
+      [
+        {
+          "name": "red",
+          "code": "#e41a1c"
+        },
+        {
+          "name": "blue",
+          "code": "#377eb8"
+        },
+        {
+          "name": "green",
+          "code": "#4daf4a"
+        },
+        {
+          "name": "orange",
+          "code": "#ff7f00"
+        },
+         {
+          "name": "yellow",
+          "code": "#ffff33"
+        },
+         {
+          "name": "brown",
+          "code": "#a65628"
+        },
+          {
+          "name": "purple",
+          "code": "#984ea3"
+        },
+          {
+          "name": "pink",
+          "code": "#f781bf"
+        }
+      ],
+       [
+        {
+          "name": "red",
+          "code": "#e41a1c"
+        },
+        {
+          "name": "blue",
+          "code": "#377eb8"
+        },
+        {
+          "name": "green",
+          "code": "#4daf4a"
+        },
+        {
+          "name": "orange",
+          "code": "#ff7f00"
+        },
+         {
+          "name": "yellow",
+          "code": "#ffff33"
+        },
+         {
+          "name": "brown",
+          "code": "#a65628"
+        },
+          {
+          "name": "purple",
+          "code": "#984ea3"
+        },
+          {
+          "name": "pink",
+          "code": "#f781bf"
+        }
+      ]
+      ]
+  }
+}
