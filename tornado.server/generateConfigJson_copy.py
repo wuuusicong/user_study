@@ -1,6 +1,7 @@
 import json
 import numpy as np
 import math
+import re
 
 totalConfig = 10
 questionNum = 27
@@ -134,6 +135,17 @@ questionContent = {
       ]
 }
 
+colorAll = {
+"red":"#e41a1c",
+"blue":"#377eb8",
+"green":"#4daf4a",
+"orange":"#ff7f00",
+"yellow":"#ffff33",
+"brown":"#a65628",
+"purple":"#984ea3",
+"pink":"#f781bf"
+}
+pattern = re.compile(r'\w*\sor\s\w*')
 documentIndex = ['A','B']
 for j in range(totalConfig*2):
     tmpAllJson = {
@@ -284,7 +296,15 @@ for j in range(totalConfig*2):
       ]
         else:
             tmpoptiontype = "radiocolor"
-            content = questionContent[contentIndex]
+            if i%3==1:
+                text = totalQA[i]
+                print(text)
+                result = pattern.findall(text)[0]
+                result = result.replace(" ", "").split("or")
+                result = [x.lower() for x in result]
+                content = [{"name":x,"code":colorAll[x]} for x in result]
+            else:
+                content = questionContent[contentIndex]
         tmp = {
             "pagetype": "questionoptionpage",
             "imgsrc": "/totalConfig/"+documentIndex[totalCategory[j][imgIndex]]+"/"+str(imgIndex)+".png",
