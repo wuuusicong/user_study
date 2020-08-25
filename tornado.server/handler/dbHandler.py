@@ -61,7 +61,8 @@ class SaveUserInfoHandler(tornado.web.RequestHandler):
 
 class SaveAnswerInfoHandler(tornado.web.RequestHandler):
     def initialize(self):
-        self.set_header("Access-Control-Allow-Origin", "http://localhost:3001")
+        # self.set_header("Access-Control-Allow-Origin", "http://localhost:3001")
+        self.set_header("Access-Control-Allow-Origin", "*")
         # self.set_header("Access-Control-Allow-Headers", "x-kopernio-plugin-version")
 
     def post(self):

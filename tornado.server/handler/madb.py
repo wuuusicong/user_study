@@ -15,7 +15,7 @@ class MADB:
 	def connectDB(self, dbname, dbip, port):
 		self._conn = MongoClient(dbip, port)
 		self._db = self._conn[dbname]
-		collectionname = 'resultinfo1'
+		collectionname = 'cplot'
 		self._collection = self._db[collectionname];
 
 	def getMA(self, maName):
