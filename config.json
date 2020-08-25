@@ -127,10 +127,12 @@
         ]
     },
     "2" : {
+         "imgsrc" : "rc1/scatterplot_intro.png",
         "pagetype" : "textpage",
         "pagecontent" : "Scatterplot"
     },
     "3" : {
+        "imgsrc" : "rc1/scatterplot_intro.png",
         "pagetype" : "textpage",
         "pagecontent" : "Exercise"
     },

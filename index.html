@@ -70,6 +70,16 @@
                 justify-content: center;
                 margin-top: 30px;
             }
+            #maintextdiv{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                width: 100%;
+                 font-size: 20px;
+                font-weight: bold;
+            }
         </style>
 
         <script type="text/javascript" src="./lib/jquery.js"></script>
@@ -82,6 +92,7 @@
         <script type="text/javascript">
             var num = 1
             var confiName = './totalConfig/config'+num.toString()+'.json'
+            // var confiName = './config.json'
             var config1 = new ConfigProcess(confiName)
             var totalconfig = []
             var configKeyList = []
@@ -133,13 +144,9 @@
                     }
                     
                 }
-                
-                
                 g_slide += 1
-
                 $('#content')[0].innerHTML = getPageContent(g_slide);
                 console.log("pagenumber", g_slide)
-                
             }
 
             function getConfigContent(slideIndex){
@@ -169,10 +176,14 @@
                     }
 
                     else if(configIndex["pagetype"] == "imgpage"){
-                        return '<div id="mainimgdiv">' + 
-                           '<img class="mainimg" src="' + configIndex["imgsrc"] +'"/>' +
-                                `<div>${configIndex["pagecontent"]}</div>`
-                           '</div>'
+                        let tmpDiv = '<div id="mainimgdiv">' +
+                           '<img class="mainimg" src="' + configIndex["imgsrc"] +'"/>'
+                        for (let i=0;i<configIndex["pagecontent"].length;i++){
+                            tmpDiv +=`<div>${configIndex["pagecontent"][i]}</div>`
+                        }
+                        tmpDiv += '</div>'
+
+                        return tmpDiv
                     }
                     else if(configIndex["pagetype"] == "questionoptionpage"){
                         var questionContent = getQuestionContent(configIndex)
@@ -182,6 +193,12 @@
                         // return imgContent + questionContent + optionContent
                         return imgContent + questionContent
                     }
+                    else if(configIndex["pagetype"] == "textpage"){
+                        return '<div id="maintextdiv">' +
+                                `<div>${configIndex["pagecontent"]}</div>`
+                           '</div>'
+                    }
+
                 }
                 else{
                     if(slideIndex > totalpage){

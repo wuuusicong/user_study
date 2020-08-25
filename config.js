@@ -39,7 +39,6 @@ function ConfigProcess(dataroot){
     }
 
     this.getQuestionandOption = function(){
-        
     }
 
     this.getUserContent = function(slideIndex){
