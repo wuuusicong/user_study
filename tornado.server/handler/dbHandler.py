@@ -79,8 +79,8 @@ class SaveAnswerInfoHandler(tornado.web.RequestHandler):
         print(user_question.split("?,"))
         ssDB.saveAnswerInfo({
             "imgsrc": user_imgsrc,
-            "question": user_question.split("?,"),
-            "answer": user_answer.split(","),
+            "question": user_question,
+            "answer": user_answer,
             "answerinterval": user_answerinterval,
         })
         print(user_question)

@@ -312,15 +312,6 @@
     ]
   },
 
-
-
-
-
-
-
-
-
-
    "6": {
     "pagetype": "imgpage",
     "imgsrc": "new/6.png",
@@ -757,7 +748,8 @@
       "radiocolor",
       "radiocolor"
     ],
-      "optioncontent": [
+      "optioncontent":
+      [
       [
         {
           "name": "yes"

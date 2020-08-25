@@ -54,6 +54,22 @@
                 height: 80%;
                 width: 100%;
             }
+            .questionAll{
+                display: flex;
+                flex-direction: column;
+                font-size: 20px;
+                font-weight: bold;
+            }
+            .question1{
+                margin-top: 10px;
+            }
+            .question2{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                margin-top: 30px;
+            }
         </style>
 
         <script type="text/javascript" src="./lib/jquery.js"></script>
@@ -64,7 +80,9 @@
         <script src = "./config.js"></script>
 
         <script type="text/javascript">
-            var config1 = new ConfigProcess('./config2.json')
+            var num = 1
+            var confiName = './totalConfig/config'+num.toString()+'.json'
+            var config1 = new ConfigProcess(confiName)
             var totalconfig = []
             var configKeyList = []
             var totalpage = 0
@@ -95,6 +113,7 @@
                     var configSlideIndex = totalconfig[g_slide]
                     if(configSlideIndex != undefined){
                         if(configSlideIndex["pagetype"] == "userinfopage"){
+                            loadImgTime()
                             g_functionhub.submit()
                         }
                         else if(configSlideIndex["pagetype"] == "questionoptionpage"){
@@ -106,10 +125,11 @@
                         if(g_slide > totalpage){
                             return 0
                         } 
-                        else if(totalconfig[g_slide+1]["pagetype"] == "questionoptionpage"){
-                            loadImgTime()
-                            $('#buttontonext')[0].innerHTML = "confirm & next"
-                        }
+                        // else if(totalconfig[g_slide+1]["pagetype"] == "questionoptionpage"){
+                        //     console.log("come in ??")
+                        //     loadImgTime()
+                        //     $('#buttontonext')[0].innerHTML = "confirm & next"
+                        // }
                     }
                     
                 }
@@ -243,12 +263,9 @@
             function getQuestionContent(config){
                 let questionText = config["questionname"]
                 let option = ''
-                let allDiv = '<div>'
-                for (let i in questionText){
-                    allDiv = allDiv +'<div '+'id = "'+"question"+i+'">'    + questionText[i] + '</div>'
-                            +getOptionContent(config["optiontype"][i],config["optioncontent"][i],i)
-
-                }
+                let allDiv = '<div '+'class = "'+"questionAll"+'">'
+                    allDiv = allDiv +'<div '+'id = "'+"question"+'">'    + questionText + '</div>'
+                            +getOptionContent(config["optiontype"],config["optioncontent"])
                 allDiv += '</div>'
                return allDiv
             }
@@ -324,14 +341,17 @@
                 return optionContent;
             }
 
-            function getOptionContent(optiontype,optioncontent,i){
+            function getOptionContent(optiontype,optioncontent){
                 // var optiontype = config["optiontype"]
-                var answerName = "answer"+i
-                var allOptioncontent = ""
+                var answerName = "answer"
+                var allOptioncontent = '<div '+'class = "'+"question2"+'">'
+                    console.log("444")
+                    console.log(optioncontent)
                 if(optiontype == "radiotext"){
                     // var optioncontent = config["optioncontent"]
                     for(var l = 0; l < optioncontent.length; l++){
                             var optionText = optioncontent[l]["name"]
+                            var tmpInput = '<div '+'class = "'+"question3"+'">'
                             console.log("optiontext",optionText)
                             if (l == 0){
                                 var input = '<input type = "radio" ' +  'name = "' +answerName+'"'+
@@ -341,13 +361,17 @@
                             else{
                                     var input = '<input type = "radio" ' +  'name = "' +answerName+'"'+
                                     ' value = " ' + optionText + ' " >'+optionText
-                            }        
-                            allOptioncontent = allOptioncontent.concat(input)
+                            }
+                            tmpInput = tmpInput + input
+                            tmpInput +='</div>'
+                            allOptioncontent = allOptioncontent.concat(tmpInput)
                         }
                 }
                 else if(optiontype == "radiocolor"){
-
+                    console.log("444")
+                    console.log(optioncontent)
                     for(var l = 0; l < optioncontent.length; ++l){
+                        var tmpInput = '<div '+'class = "'+"question3"+'">'
                         var colorcode = optioncontent[l]["code"]
                         var colorname = optioncontent[l]["name"]
                         if (l == 0){
@@ -361,10 +385,13 @@
                         }
                         var optionText = '<svg width="30" height="15"> <rect style = "fill: ' + colorcode + ';" width="35" height="15" ></rect> </svg> '+ colorname
                         // input = input + optionText
-                        allOptioncontent = allOptioncontent.concat(input + optionText)
+                        tmpInput += input + optionText
+                        tmpInput +='</div>'
+                        // allOptioncontent = allOptioncontent.concat(input + optionText)
+                        allOptioncontent = allOptioncontent.concat(tmpInput)
                     }
                 }
-                
+                allOptioncontent += '</div>'
                 return allOptioncontent;
             }
 
@@ -435,6 +462,7 @@
             // }
 
             loadImgTime = function(){
+                console.log("time怎么有问题")
                 timestart = new Date()
                 console.log(' time start ', timestart)
             }
@@ -443,7 +471,6 @@
                 console.log("timestart", timestart)
 
                 timeend = new Date();
-
                 // interval_new = (timeend - timestart)/1000
 
                 var intervalms = (timeend - timestart);
@@ -464,24 +491,18 @@
                 interval = hours * 3600 + minutes*60 + seconds + seconds2
                 console.log("timeend", timeend)
                 console.log("interval",interval)
-
+                timestart = new Date()
                 // timestart = timeend
             }
 
             answerSubmit = function(imgIndex){
                 nextButtonTime();
                 var self = this;
-                this._answer = []
-                this._answer[0] = $('input:radio[name="answer0"]:checked').val();
-                this._answer[1] = $('input:radio[name="answer1"]:checked').val();
-                this._answer[2] = $('input:radio[name="answer2"]:checked').val();
 
-                // this._answer = $('input:radio[name="answer"]:checked').val();
-                // this._question = $('#question').text()
-                this._question = []
-                this._question[0] = $('#question0').text()
-                this._question[1] = $('#question1').text()
-                this._question[2] = $('#question2').text()
+
+                this._answer = $('input:radio[name="answer"]:checked').val();
+                this._question = $('#question').text()
+
 
                 this._imgname2 = imgIndex.toString().concat(".png")
                 this._imgsrc = totalconfig[imgIndex]["imgsrc"].toString()
