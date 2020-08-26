@@ -99,7 +99,9 @@
 
         <script type="text/javascript">
             var num = 1
-            var confiName = './totalConfig/config'+num.toString()+'.json'
+            // var confiName = './totalConfig/config'+num.toString()+'.json'
+            var configureType = 'A' //or 'B'
+            var confiName = './FormalConfig/'+configureType+'.json'
             console.log(confiName)
             // var confiName = './config.json'
             var config1 = new ConfigProcess(confiName)
