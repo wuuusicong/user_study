@@ -42,11 +42,14 @@
                 width: 30px;
                 height: 30px;
             }
-            .mainimg{
+            .mainimg,.explainImg{
                 /*height: 80%;*/
                 height: 400px;
                 margin-bottom: 30px;
                 background: white;
+            }
+            .explainImg{
+                height: 600px;
             }
             #mainimgdiv{
                 height: 80%;
@@ -100,7 +103,7 @@
         <script type="text/javascript">
             var num = 1
             // var confiName = './totalConfig/config'+num.toString()+'.json'
-            var configureType = 'A' //or 'B'
+            var configureType = 'A_copy' //or 'B'
             var confiName = './FormalConfig/'+configureType+'.json'
             console.log(confiName)
             // var confiName = './config.json'
@@ -194,6 +197,17 @@
                     }
 
                     else if(configIndex["pagetype"] == "imgpage"){
+                        if(slideIndex===3){
+                            let tmpDiv = '<div id="mainimgdiv">' +
+                           '<img class="explainImg" src="' + configIndex["imgsrc"] +'"/>'
+                        for (let i=0;i<configIndex["pagecontent"].length;i++){
+                            tmpDiv +=`<div>${configIndex["pagecontent"][i]}</div>`
+                        }
+                        tmpDiv += '</div>'
+
+                        return tmpDiv
+
+                        }
                         let tmpDiv = '<div id="mainimgdiv">' +
                            '<img class="mainimg" src="' + configIndex["imgsrc"] +'"/>'
                         for (let i=0;i<configIndex["pagecontent"].length;i++){
