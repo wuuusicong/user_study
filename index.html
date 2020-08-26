@@ -100,6 +100,7 @@
         <script type="text/javascript">
             var num = 1
             var confiName = './totalConfig/config'+num.toString()+'.json'
+            console.log(confiName)
             // var confiName = './config.json'
             var config1 = new ConfigProcess(confiName)
             var totalconfig = []
@@ -163,7 +164,7 @@
 
             function getPageContent(slideIndex){
                 var configIndex = totalconfig[slideIndex]
-
+                console.log(slideIndex)
                 console.log("configindex", configIndex)
 
                 // var pagesContent = {
