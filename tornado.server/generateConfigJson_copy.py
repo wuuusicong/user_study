@@ -30,7 +30,7 @@ exerciseQA = [
               "Which cluster has the largest portion overlapped by the Red cluster, Pink or Green?",
               "Which cluster overlaps with the largest number of clusters?",
               "Does the Red cluster overlap with the Blue one?",
-              "Which cluster has the largest portion overlapped by the Orange cluster, Red or Blue?",
+              "Which cluster has the largest portion overlapped by the Orange cluster, Red or Green?",
               "Which cluster overlaps with the largest number of clusters?",
               "Does the Red cluster overlap with the Blue one?",
               "Which cluster has the largest portion overlapped by the Green cluster, Red or Blue?",
@@ -442,7 +442,7 @@ for j in range(totalConfig*2):
         tmpAllJson[str(i+21)] = {}
 
         imgIndex = math.floor(i / 3)
-        contentIndex = math.floor(i%3)
+        contentIndex = math.floor(i/9)
 
         if i%3==0:
             tmpoptiontype = "radiotext"
