@@ -126,15 +126,15 @@
       }
     ]
   },
-  "2": {
-    "pagetype": "textpage",
-    "pagecontent": "［你将在这个测试中看到两种图］泡泡图和矩阵图。\n这两种图都是用来表示类和类间关系的。"
+    "2": {
+    "pagetype": "imgpage",
+    "imgsrc": "exercise/图片1.png",
+    "pagecontent": ["［你将在这个测试中看到两种图］泡泡图和矩阵图。\n这两种图都是用来表示类和类间关系的。"]
   },
   "3": {
     "pagetype": "imgpage",
-    "imgsrc": "exercise/图片1.png",
+    "imgsrc": "exercise/解释.png",
     "pagecontent": [
-      "A类对B类的重叠占比 ＝ A类和B类重叠面积大小／B类总面积"
     ]
   },
   "4": {
