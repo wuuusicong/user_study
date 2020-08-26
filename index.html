@@ -125,6 +125,9 @@
                     console.log("totalpage", totalpage)
                 }
                 else{
+                    if(g_slide===20){
+                        loadImgTime()
+                    }
                     if (g_slide >= totalpage){
                         $('#pageno')[0].innerHTML = '' + totalpage + '/' + totalpage;
                     }
@@ -135,12 +138,16 @@
                     var configSlideIndex = totalconfig[g_slide]
                     if(configSlideIndex != undefined){
                         if(configSlideIndex["pagetype"] == "userinfopage"){
-                            loadImgTime()
                             g_functionhub.submit()
                         }
                         else if(configSlideIndex["pagetype"] == "questionoptionpage"){
-                            answerSubmit(g_slide)
+                            if(g_slide<=20){
+                                 $('#buttontonext')[0].innerHTML = "next"
+                            }else{
+                                answerSubmit(g_slide)
                             $('#buttontonext')[0].innerHTML = "next"
+                            }
+
                         }
                     }
                     else{
@@ -524,7 +531,7 @@
             }
 
             answerSubmit = function(imgIndex){
-                nextButtonTime();
+                nextButtonTime()
                 var self = this;
 
 
